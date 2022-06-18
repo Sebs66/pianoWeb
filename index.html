@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h1>Header</h1>
+    </header>
+    <main>
+        <section>
+            <div class="container container1">
+                <div class="container__noteBtns">
+                    <div class="chordSizeBtns">
+                        <button data-chordsize = 'triad' class="btnSelected">Triad</button>
+                        <button data-chordsize = 'tetrad'>Tetrad</button>
+                    </div>
+                    <div class="chordColorBtns">
+                        <div class = 'triadBtns'>
+                            <button data-chordcolor = 'major' class="btnSelected">Major</button>
+                            <button data-chordcolor = 'minor'>Minor</button>
+                            <button data-chordcolor = 'diminished'>diminished</button>
+                            <button data-chordcolor = 'augmented'>Augmented</button>
+                            <button data-chordcolor = 'sus2'>Sus2</button>
+                            <button data-chordcolor = 'sus4'>Sus4</button>
+                        </div>
+                        <div class = 'tetradBtns hidden'>
+                            <button data-chordcolor = 'maj7' class="btnSelected">Maj7</button>
+                            <button data-chordcolor = 'minor7'>Minor7</button>
+                            <button data-chordcolor = 'dominant7'>Dominant7</button>
+                        </div>
+                    </div>
+                    <div class="noteBtns">
+                        <button data-note="C">C</button>
+                        <button data-note="D">D</button>
+                        <button data-note="E">E</button>
+                        <button data-note="F">F</button>      
+                        <button data-note="G">G</button>
+                        <button data-note="A">A</button>
+                        <button data-note="B">B</button>
+                    </div>
+                    <div class="accidentalsBtns">
+                        <button data-accidental="sharp">#</button>
+                        <button data-accidental="bemol">b</button>
+                    </div>
+                </div>
+                <div class="piano">
+                    <div data-note="C" data-notenumber="0" class="key white C"></div>
+                    <div class="space">
+                        <div data-note="Cs/Db" data-notenumber="1" class="key black Cs/Db"></div>
+                    </div>
+                    <div data-note="D" data-notenumber="2" class="key white D"></div>
+                    <div class="space">
+                        <div data-note="Ds/Eb" data-notenumber="3" class="key black Ds/Eb"></div>
+                    </div>
+                    <div data-note="E" data-notenumber="4" class="key white E"></div>
+                    <div class="space"></div>
+                    <div data-note="F" data-notenumber="5" class="key white F"></div>
+                    <div class="space">
+                        <div data-note="Fs/Gb" data-notenumber="6" class="key black Fs/Gb"></div>
+                    </div>
+                    <div data-note="G" data-notenumber="7" class="key white G"></div>
+                    <div class="space">
+                        <div data-note="Gs/Ab" data-notenumber="8" class="key black Gs/Ab"></div>
+                    </div>
+                    <div data-note="A" data-notenumber="9" class="key white A"></div>
+                    <div class="space">
+                        <div data-note="As/Bb" data-notenumber="10" class="key black As/Bb"></div>
+                    </div>
+                    <div data-note="B" data-notenumber="11" class="key white B"></div>
+                    <div class="space"></div>
+                    <div data-note="C" data-notenumber="0" class="key white C"></div>
+                    <div class="space">
+                        <div data-note="Cs/Db" data-notenumber="1" class="key black Cs/Db"></div>
+                    </div>
+                    <div data-note="D" data-notenumber="2" class="key white D"></div>
+                    <div class="space">
+                        <div data-note="Ds/Eb" data-notenumber="3" class="key black Ds/Eb"></div>
+                    </div>
+                    <div data-note="E" data-notenumber="4" class="key white E"></div>
+                    <div class="space"></div>
+                    <div data-note="F" data-notenumber="5" class="key white F"></div>
+                    <div class="space">
+                        <div data-note="Fs/Gb" data-notenumber="6" class="key black Fs/Gb"></div>
+                    </div>
+                    <div data-note="G" data-notenumber="7" class="key white G"></div>
+                    <div class="space">
+                        <div data-note="Gs/Ab" data-notenumber="8" class="key black Gs/Ab"></div>
+                    </div>
+                    <div data-note="A" data-notenumber="9" class="key white A"></div>
+                    <div class="space">
+                        <div data-note="As/Bb" data-notenumber="10" class="key black As/Bb"></div>
+                    </div>
+                    <div data-note="B" data-notenumber="11" class="key white B"></div>
+                </div>
+            </div>
+            <div class="container container2">
+                <div class="container__noteBtns">
+                    <div class="chordSizeBtns">
+                        <button data-chordsize = 'triad' class="btnSelected">Triad</button>
+                        <button data-chordsize = 'tetrad'>Tetrad</button>
+                    </div>
+                    <div class="chordColorBtns">
+                        <div class = 'triadBtns'>
+                            <button data-chordcolor = 'major' class="btnSelected">Major</button>
+                            <button data-chordcolor = 'minor'>Minor</button>
+                            <button data-chordcolor = 'diminished'>diminished</button>
+                            <button data-chordcolor = 'augmented'>Augmented</button>
+                            <button data-chordcolor = 'sus2'>Sus2</button>
+                            <button data-chordcolor = 'sus4'>Sus4</button>
+                        </div>
+                        <div class = 'tetradBtns hidden'>
+                            <button data-chordcolor = 'maj7' class="btnSelected">Maj7</button>
+                            <button data-chordcolor = 'minor7'>Minor7</button>
+                            <button data-chordcolor = 'dominant7'>Dominant7</button>
+                        </div>
+                    </div>
+                    <div class="noteBtns">
+                        <button data-note="C">C</button>
+                        <button data-note="D">D</button>
+                        <button data-note="E">E</button>
+                        <button data-note="F">F</button>      
+                        <button data-note="G">G</button>
+                        <button data-note="A">A</button>
+                        <button data-note="B">B</button>
+                    </div>
+                    <div class="accidentalsBtns">
+                        <button data-accidental="sharp">#</button>
+                        <button data-accidental="bemol">b</button>
+                    </div>
+                </div>
+                <div class="piano">
+                    <div data-note="C" data-notenumber="0" class="key white C"></div>
+                    <div class="space">
+                        <div data-note="Cs/Db" data-notenumber="1" class="key black Cs/Db"></div>
+                    </div>
+                    <div data-note="D" data-notenumber="2" class="key white D"></div>
+                    <div class="space">
+                        <div data-note="Ds/Eb" data-notenumber="3" class="key black Ds/Eb"></div>
+                    </div>
+                    <div data-note="E" data-notenumber="4" class="key white E"></div>
+                    <div class="space"></div>
+                    <div data-note="F" data-notenumber="5" class="key white F"></div>
+                    <div class="space">
+                        <div data-note="Fs/Gb" data-notenumber="6" class="key black Fs/Gb"></div>
+                    </div>
+                    <div data-note="G" data-notenumber="7" class="key white G"></div>
+                    <div class="space">
+                        <div data-note="Gs/Ab" data-notenumber="8" class="key black Gs/Ab"></div>
+                    </div>
+                    <div data-note="A" data-notenumber="9" class="key white A"></div>
+                    <div class="space">
+                        <div data-note="As/Bb" data-notenumber="10" class="key black As/Bb"></div>
+                    </div>
+                    <div data-note="B" data-notenumber="11" class="key white B"></div>
+                    <div class="space"></div>
+                    <div data-note="C" data-notenumber="0" class="key white C"></div>
+                    <div class="space">
+                        <div data-note="Cs/Db" data-notenumber="1" class="key black Cs/Db"></div>
+                    </div>
+                    <div data-note="D" data-notenumber="2" class="key white D"></div>
+                    <div class="space">
+                        <div data-note="Ds/Eb" data-notenumber="3" class="key black Ds/Eb"></div>
+                    </div>
+                    <div data-note="E" data-notenumber="4" class="key white E"></div>
+                    <div class="space"></div>
+                    <div data-note="F" data-notenumber="5" class="key white F"></div>
+                    <div class="space">
+                        <div data-note="Fs/Gb" data-notenumber="6" class="key black Fs/Gb"></div>
+                    </div>
+                    <div data-note="G" data-notenumber="7" class="key white G"></div>
+                    <div class="space">
+                        <div data-note="Gs/Ab" data-notenumber="8" class="key black Gs/Ab"></div>
+                    </div>
+                    <div data-note="A" data-notenumber="9" class="key white A"></div>
+                    <div class="space">
+                        <div data-note="As/Bb" data-notenumber="10" class="key black As/Bb"></div>
+                    </div>
+                    <div data-note="B" data-notenumber="11" class="key white B"></div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="container container3">
+                <div class="container__noteBtns">
+                    <div class="chordSizeBtns">
+                        <button data-chordsize = 'triad' class="btnSelected">Triad</button>
+                        <button data-chordsize = 'tetrad'>Tetrad</button>
+                    </div>
+                    <div class="chordColorBtns">
+                        <div class = 'triadBtns'>
+                            <button data-chordcolor = 'major' class="btnSelected">Major</button>
+                            <button data-chordcolor = 'minor'>Minor</button>
+                            <button data-chordcolor = 'diminished'>diminished</button>
+                            <button data-chordcolor = 'augmented'>Augmented</button>
+                            <button data-chordcolor = 'sus2'>Sus2</button>
+                            <button data-chordcolor = 'sus4'>Sus4</button>
+                        </div>
+                        <div class = 'tetradBtns hidden'>
+                            <button data-chordcolor = 'maj7' class="btnSelected">Maj7</button>
+                            <button data-chordcolor = 'minor7'>Minor7</button>
+                            <button data-chordcolor = 'dominant7'>Dominant7</button>
+                        </div>
+                    </div>
+                    <div class="noteBtns">
+                        <button data-note="C">C</button>
+                        <button data-note="D">D</button>
+                        <button data-note="E">E</button>
+                        <button data-note="F">F</button>      
+                        <button data-note="G">G</button>
+                        <button data-note="A">A</button>
+                        <button data-note="B">B</button>
+                    </div>
+                    <div class="accidentalsBtns">
+                        <button data-accidental="sharp">#</button>
+                        <button data-accidental="bemol">b</button>
+                    </div>
+                </div>
+                <div class="piano">
+                    <div data-note="C" data-notenumber="0" class="key white C"></div>
+                    <div class="space">
+                        <div data-note="Cs/Db" data-notenumber="1" class="key black Cs/Db"></div>
+                    </div>
+                    <div data-note="D" data-notenumber="2" class="key white D"></div>
+                    <div class="space">
+                        <div data-note="Ds/Eb" data-notenumber="3" class="key black Ds/Eb"></div>
+                    </div>
+                    <div data-note="E" data-notenumber="4" class="key white E"></div>
+                    <div class="space"></div>
+                    <div data-note="F" data-notenumber="5" class="key white F"></div>
+                    <div class="space">
+                        <div data-note="Fs/Gb" data-notenumber="6" class="key black Fs/Gb"></div>
+                    </div>
+                    <div data-note="G" data-notenumber="7" class="key white G"></div>
+                    <div class="space">
+                        <div data-note="Gs/Ab" data-notenumber="8" class="key black Gs/Ab"></div>
+                    </div>
+                    <div data-note="A" data-notenumber="9" class="key white A"></div>
+                    <div class="space">
+                        <div data-note="As/Bb" data-notenumber="10" class="key black As/Bb"></div>
+                    </div>
+                    <div data-note="B" data-notenumber="11" class="key white B"></div>
+                    <div class="space"></div>
+                    <div data-note="C" data-notenumber="0" class="key white C"></div>
+                    <div class="space">
+                        <div data-note="Cs/Db" data-notenumber="1" class="key black Cs/Db"></div>
+                    </div>
+                    <div data-note="D" data-notenumber="2" class="key white D"></div>
+                    <div class="space">
+                        <div data-note="Ds/Eb" data-notenumber="3" class="key black Ds/Eb"></div>
+                    </div>
+                    <div data-note="E" data-notenumber="4" class="key white E"></div>
+                    <div class="space"></div>
+                    <div data-note="F" data-notenumber="5" class="key white F"></div>
+                    <div class="space">
+                        <div data-note="Fs/Gb" data-notenumber="6" class="key black Fs/Gb"></div>
+                    </div>
+                    <div data-note="G" data-notenumber="7" class="key white G"></div>
+                    <div class="space">
+                        <div data-note="Gs/Ab" data-notenumber="8" class="key black Gs/Ab"></div>
+                    </div>
+                    <div data-note="A" data-notenumber="9" class="key white A"></div>
+                    <div class="space">
+                        <div data-note="As/Bb" data-notenumber="10" class="key black As/Bb"></div>
+                    </div>
+                    <div data-note="B" data-notenumber="11" class="key white B"></div>
+                </div>
+            </div>
+            <div class="container container4">
+                <div class="container__noteBtns">
+                    <div class="chordSizeBtns">
+                        <button data-chordsize = 'triad' class="btnSelected">Triad</button>
+                        <button data-chordsize = 'tetrad'>Tetrad</button>
+                    </div>
+                    <div class="chordColorBtns">
+                        <div class = 'triadBtns'>
+                            <button data-chordcolor = 'major' class="btnSelected">Major</button>
+                            <button data-chordcolor = 'minor'>Minor</button>
+                            <button data-chordcolor = 'diminished'>diminished</button>
+                            <button data-chordcolor = 'augmented'>Augmented</button>
+                            <button data-chordcolor = 'sus2'>Sus2</button>
+                            <button data-chordcolor = 'sus4'>Sus4</button>
+                        </div>
+                        <div class = 'tetradBtns hidden'>
+                            <button data-chordcolor = 'maj7' class="btnSelected">Maj7</button>
+                            <button data-chordcolor = 'minor7'>Minor7</button>
+                            <button data-chordcolor = 'dominant7'>Dominant7</button>
+                        </div>
+                    </div>
+                    <div class="noteBtns">
+                        <button data-note="C">C</button>
+                        <button data-note="D">D</button>
+                        <button data-note="E">E</button>
+                        <button data-note="F">F</button>      
+                        <button data-note="G">G</button>
+                        <button data-note="A">A</button>
+                        <button data-note="B">B</button>
+                    </div>
+                    <div class="accidentalsBtns">
+                        <button data-accidental="sharp">#</button>
+                        <button data-accidental="bemol">b</button>
+                    </div>
+                </div>
+                <div class="piano">
+                    <div data-note="C" data-notenumber="0" class="key white C"></div>
+                    <div class="space">
+                        <div data-note="Cs/Db" data-notenumber="1" class="key black Cs/Db"></div>
+                    </div>
+                    <div data-note="D" data-notenumber="2" class="key white D"></div>
+                    <div class="space">
+                        <div data-note="Ds/Eb" data-notenumber="3" class="key black Ds/Eb"></div>
+                    </div>
+                    <div data-note="E" data-notenumber="4" class="key white E"></div>
+                    <div class="space"></div>
+                    <div data-note="F" data-notenumber="5" class="key white F"></div>
+                    <div class="space">
+                        <div data-note="Fs/Gb" data-notenumber="6" class="key black Fs/Gb"></div>
+                    </div>
+                    <div data-note="G" data-notenumber="7" class="key white G"></div>
+                    <div class="space">
+                        <div data-note="Gs/Ab" data-notenumber="8" class="key black Gs/Ab"></div>
+                    </div>
+                    <div data-note="A" data-notenumber="9" class="key white A"></div>
+                    <div class="space">
+                        <div data-note="As/Bb" data-notenumber="10" class="key black As/Bb"></div>
+                    </div>
+                    <div data-note="B" data-notenumber="11" class="key white B"></div>
+                    <div class="space"></div>
+                    <div data-note="C" data-notenumber="0" class="key white C"></div>
+                    <div class="space">
+                        <div data-note="Cs/Db" data-notenumber="1" class="key black Cs/Db"></div>
+                    </div>
+                    <div data-note="D" data-notenumber="2" class="key white D"></div>
+                    <div class="space">
+                        <div data-note="Ds/Eb" data-notenumber="3" class="key black Ds/Eb"></div>
+                    </div>
+                    <div data-note="E" data-notenumber="4" class="key white E"></div>
+                    <div class="space"></div>
+                    <div data-note="F" data-notenumber="5" class="key white F"></div>
+                    <div class="space">
+                        <div data-note="Fs/Gb" data-notenumber="6" class="key black Fs/Gb"></div>
+                    </div>
+                    <div data-note="G" data-notenumber="7" class="key white G"></div>
+                    <div class="space">
+                        <div data-note="Gs/Ab" data-notenumber="8" class="key black Gs/Ab"></div>
+                    </div>
+                    <div data-note="A" data-notenumber="9" class="key white A"></div>
+                    <div class="space">
+                        <div data-note="As/Bb" data-notenumber="10" class="key black As/Bb"></div>
+                    </div>
+                    <div data-note="B" data-notenumber="11" class="key white B"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="./script.js"></script>
+</body>
+</html>
