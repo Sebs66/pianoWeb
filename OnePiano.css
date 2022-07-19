@@ -32,7 +32,7 @@ section{
     background-color: aqua;
     margin:10px;
 }
-.container__noteBtns{
+.parent_container__Btns{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     width:90%;

@@ -1,338 +1,236 @@
 "use strict";
 
-function piano(containerReference) {
-    const stringButtons = `.container.${containerReference} button`;
-    const allButtons = document.querySelectorAll(stringButtons);
-    const stringKeys = `.${containerReference} .key`;
-    const keys = document.querySelectorAll(stringKeys);
-    //console.log(allButtons);
-    //console.log(keys);
+//h1 Defining Selectors.
+const parent_container__Btns = document.querySelector(
+    ".parent_container__Btns"
+);
+const piano = document.querySelector(".container1 .piano");
+const keys = piano.querySelectorAll(".key");
 
-    //h1 Triad/Tetrads Buttons.
-    const BooleanChordSize = { triad: true, tetrad: false };
-    /// Filtramos de todos los botones, los que corresponden.
-    const chordSizeBtns = [...allButtons].filter((button) => {
-        return Object.keys(button.dataset)[0] === "chordsize";
+//h1 Event Listener.
+parent_container__Btns.addEventListener("click", (event) => {
+    const clicked = event.target.closest("button");
+    /// Guard clause
+    if (!clicked) return;
+    /// Redirect to specific function
+    //console.log(event.target.closest('button'))
+    switch (clicked.dataset.button) {
+        case "notebtn":
+            noteBtn(clicked);
+            break;
+        case "chordcolor":
+            chordColorBtn(clicked);
+            break;
+        case "chordsize":
+            chordSizeBtn(clicked);
+            break;
+        case "accidental":
+            accidentalBtn(clicked);
+        default:
+            break;
+    }
+    printChord();
+});
+
+//h1 Object with State Variables.
+const chord = {
+    note: null,
+    color: "major",
+    size: "triad",
+    accidental: "natural",
+};
+
+const noteBtn = function (HTMLbutton) {
+    /// Get all siblings
+    const Btns = [...HTMLbutton.parentElement.children];
+    Btns.forEach((button) => {
+        button.classList.remove("btnSelected");
     });
-    /// Triad div and Tetrad div.
-    const triadDivString = `.container.${containerReference} div.triadBtns`;
-    const triadDiv = document.querySelector(triadDivString);
-    const tetradDivString = `.container.${containerReference} div.tetradBtns`;
-    const tetradDiv = document.querySelector(tetradDivString);
-    //h2 EventListeners
-    for (let button of chordSizeBtns) {
-        button.addEventListener("click", function () {
-            selectChordSize(this.dataset.chordsize);
-            //! showTriadButtons(); Debemos integrar esta opción para que segun el boton triad/tedrad, aparezcan los botones correspondientes de los chordColors.
-        });
-    }
-    //h2 Select Triad/Tetrad
-    function selectChordSize(chordSize) {
-        /// Esta función maneja un objeto de 2 booleanos, segun el tamaño del acorde.
-        /// Manipula también las clases de los botones Triad/Tetrad del DOM para mostrar cuál está seleccionado.)
-        if (chordSize === "triad") {
-            changeBooleanChordColor('major');
-            console.log(BooleanChordColor);
-            //console.log('triad')
-            [BooleanChordSize["triad"], BooleanChordSize["tetrad"]] = [
-                true,
-                false,
-            ];
-            chordSizeBtns[0].classList.add("btnSelected");
-            chordSizeBtns[1].classList.remove("btnSelected");
-            triadDiv.classList.remove('hidden');
-            tetradDiv.classList.add('hidden');
-
-        } else if (chordSize === "tetrad") {
-            changeBooleanChordColor('maj7');
-            console.log(BooleanChordColor);
-            //console.log('tetrad')
-            [BooleanChordSize["triad"], BooleanChordSize["tetrad"]] = [
-                false,
-                true,
-            ];
-            chordSizeBtns[0].classList.remove("btnSelected");
-            chordSizeBtns[1].classList.add("btnSelected");
-            triadDiv.classList.add('hidden');
-            tetradDiv.classList.remove('hidden');
-        }
-    }
-    //h1 All ChordColor Buttons.
-    const BooleanChordColor = {
-        major: true,
-        minor: false,
-        diminished: false,
-        augmented: false,
-        sus2: false,
-        sus4: false,
-        maj7: false,
-        minor7: false,
-        dominant7: false,
-    };
-
-    function changeBooleanChordColor(string){
-        const ObjectArray = Object.keys(BooleanChordColor)
-        ObjectArray.forEach((key)=>{
-            if (key !== string){
-                BooleanChordColor[key] = false;
-            } else if (key === string){
-                BooleanChordColor[key] = true;
-                console.log(chordColorBtns);
-                const chordColorbtn = chordColorBtns.filter((button)=>{
-                    return button.dataset['chordcolor'] === string
-                })
-                console.log(chordColorbtn[0].classList);
-                chordColorbtn[0].classList.add("btnSelected");
-            }
-        });
-        
-    }
-
-
-    const chordColorBtns = [...allButtons].filter((button) => {
-        return Object.keys(button.dataset)[0] === "chordcolor";
+    HTMLbutton.classList.add("btnSelected");
+    //console.log(chord.note)
+};
+const chordColorBtn = function (HTMLbutton) {
+    /// Get all siblings
+    const Btns = [...HTMLbutton.parentElement.children];
+    Btns.forEach((button) => {
+        button.classList.remove("btnSelected");
     });
-    //h2 EventListeners
-    for (let button of chordColorBtns) {
-        button.addEventListener("click", function () {
-            //console.log(this)
-            selectChordColor(button);
-        });
-    }
-    //h2 Select Mayor/Minor chord.
-    function selectChordColor(chordColorBtn) {
-        /// Esta función maneja un objeto de 6 booleanos, segun el color del acorde que se elija.
-        /// Manipula también las clases de los botones Mayor/Minor/Diminished/Augmented/Sus2/Sus4 del DOM para mostrar cuál está seleccionado.
-        const chordColor = chordColorBtn.dataset.chordcolor;
-        chordColorBtns.forEach((button) => {
-            const chordColorIterator = button.dataset.chordcolor; /// chord color del boton de turno en el loop
-            if (chordColorIterator === chordColor) {
-                BooleanChordColor[chordColor] = true;
-                button.classList.add("btnSelected");
-            } else {
-                BooleanChordColor[chordColorIterator] = false;
-                button.classList.remove("btnSelected");
-            }
-        });
-    }
-    //h1 Accidental Buttons.
-    const BooleanAccidental = { sharp: false, bemol: false, natural: true };
-    const accidentalBtns = [...allButtons].filter((button) => {
-        return Object.keys(button.dataset)[0] === "accidental";
+    HTMLbutton.classList.add("btnSelected");
+    //console.log(chord.color)
+};
+const chordSizeBtn = function (HTMLbutton) {
+    /// Special Case. We need to change display of color btns depending of this button.
+    /// Get all siblings
+    const Btns = [...HTMLbutton.parentElement.children];
+    Btns.forEach((button) => {
+        button.classList.remove("btnSelected");
     });
-    //h2 EventListeners
-    for (let button of accidentalBtns) {
-        button.addEventListener("click", function () {
-            selectAccidental(button);
-        });
-    }
-    //h2 Select Accidental
-    function selectAccidental(accidentalBtn) {
-        /// Esta funcion maneja un objeto de 3 booleans, segun el accidental que se elija o no.
-        /// Manipula también las clases de los botones '#' y 'b' del DOM para mostrar cual accidental está seleccionado. Si no hay accidental seleccionado, es porque el chord es natural (sin accidentals).
-        const accidental = accidentalBtn.dataset.accidental;
-        if (accidental === "sharp") {
-            /// preguntamos si ya estaba activo.
-            const active = accidentalBtn.classList.contains("btnSelected");
-            if (active) {
-                accidentalBtn.classList.remove("btnSelected");
-                [BooleanAccidental["sharp"], BooleanAccidental["natural"]] = [
-                    false,
-                    true,
-                ];
-            } else {
-                accidentalBtns[0].classList.add("btnSelected");
-                accidentalBtns[1].classList.remove("btnSelected");
-                [
-                    BooleanAccidental["sharp"],
-                    BooleanAccidental["bemol"],
-                    BooleanAccidental["natural"],
-                ] = [true, false, false];
-            }
-        } else if (accidental === "bemol") {
-            /// preguntamos si ya estaba activo.
-            const active = accidentalBtn.classList.contains("btnSelected");
-            if (active) {
-                accidentalBtn.classList.remove("btnSelected");
-                [BooleanAccidental["bemol"], BooleanAccidental["natural"]] = [
-                    false,
-                    true,
-                ];
-            } else {
-                accidentalBtns[0].classList.remove("btnSelected");
-                accidentalBtns[1].classList.add("btnSelected");
-                [
-                    BooleanAccidental["sharp"],
-                    BooleanAccidental["bemol"],
-                    BooleanAccidental["natural"],
-                ] = [false, true, false];
-            }
-        }
-    }
-
-    //h1 Note Buttons.
-    const noteBtns = [...allButtons].filter((button) => {
-        return Object.keys(button.dataset)[0] === "note";
+    HTMLbutton.classList.add("btnSelected");
+    //console.log(chord.size)
+    /// Acting on Color Butons.
+    const chordColorContainer = [
+        ...document.querySelector(".container__chordColorBtns").children,
+    ];
+    chordColorContainer.forEach((buttons) => {
+        [...buttons.children].forEach((button) =>
+            button.classList.remove("btnSelected")
+        );
+        buttons.classList.add("hidden");
     });
-    const BooleanNoteBtns = {
-        C: false,
-        D: false,
-        E: false,
-        F: false,
-        G: false,
-        A: false,
-        B: false,
-    };
-    //h2 EventListeners
-    for (let button of noteBtns) {
-        button.addEventListener("click", function () {
-            selectRootNote(this);
-        });
+    chord.size = HTMLbutton.dataset.chordsize
+    if (chord.size == "triad") {
+        chordColorContainer[0].classList.remove("hidden");
+    } else if (chord.size == "tetrad") {
+        chordColorContainer[1].classList.remove("hidden");
     }
-    //h2 Select RootNote
-    function selectRootNote(rootNoteBtn) {
-        /// Esta funcion maneja un objeto con booleanos acorde a la nota seleccionada.
-        /// Maneja también las clases de los botones notas del DOM para mostrar cuál está seleccionado.
-        const rootNote = rootNoteBtn.dataset.note;
-        noteBtns.forEach((noteBtn) => {
-            /// remove btnSelected class from all buttons.
-            noteBtn.classList.remove("btnSelected");
-            BooleanNoteBtns[noteBtn.dataset.note] = false;
+    chord.color = null; //! Se resetea el estado del color del chord. Podemos cambiarlo a que tenga uno por defecto. Veamos como funciona mejor.
+};
+const accidentalBtn = function (HTMLbutton) {
+    /// Special Case. The button can be 'turned off'.
+    /// Get all siblings
+    const Btns = [...HTMLbutton.parentElement.children];
+    if (HTMLbutton.classList.contains("btnSelected")) {
+        /// Apagamos el boton
+        HTMLbutton.classList.remove("btnSelected");
+    } else {
+        Btns.forEach((button) => {
+            button.classList.remove("btnSelected");
         });
-        /// add 'btnSelected' and set true only to selected btn.
-        BooleanNoteBtns[rootNote] = true;
-        rootNoteBtn.classList.add("btnSelected");
+        HTMLbutton.classList.add("btnSelected");
     }
+    //console.log(chord.accidental)
+};
 
-    //h1 Key Buttons
-    //console.log(keys)
-    //h2 EventListeners
-    for (let key of keys) {
-        //console.log(tecla)
-        key.addEventListener("click", function () {
-            console.log(this.dataset.note);
-        });
-    }
-    //h2 Select Keys
-    function selectKeys() {
-        const ChordData = getChordData();
-        console.log("Key Data (selectKeys())", ChordData);
-        removeKeyMarks(); /// Start with a fresh keyboard.
-        markKeys(ChordData);
-    }
-    function removeKeyMarks() {
-        keys.forEach((key) => {
-            /// Removemos seleccionada.
-            key.classList.remove("rootKeySelected");
-            key.classList.remove("keySelected");
-        });
-    }
-    function markKeys(ChordData) {
-        const KeysInfo = {
-            triad: {
-                major: [0, 4, 7],
-                minor: [0, 3, 7],
-                diminished: [0, 3, 6],
-                augmented: [0, 4, 8],
-                sus2: [0, 2, 7],
-                sus4: [0, 5, 7],
-            },
-            tetrad: {
-                maj7: [0, 4, 7, 11],
-                minor7: [0, 3, 7, 10],
-                dominant7: [0, 4, 7, 10], /// Major with minor at the end.
-            },
-        };
-        const notesOrder = {
-            Cb: 11,
-            C: 0,
-            Cs: 1,
-            Db: 1,
-            D: 2,
-            Ds: 3,
-            Eb: 3,
-            E: 4,
-            Fb: 4,
-            Es: 5,
-            F: 5,
-            Fs: 6,
-            Gb: 6,
-            G: 7,
-            Gs: 8,
-            Ab: 8,
-            A: 9,
-            As: 10,
-            Bb: 10,
-            B: 11,
-            Bs: 0,
-        };
-
-        const rootNoteNumber = notesOrder[ChordData.rootNote]; /// Number from 0 to 11 wich corresponds rootNote DOM key.
-        const [chordSize, chordColor] = [
-            ChordData.chordSize,
-            ChordData.chordColor,
-        ];
-        const chordNumbers = KeysInfo[chordSize][chordColor]; /// Array from KeysInfo with chord numbers.
-        const rootNoteKey = [...keys].filter((key) => {
-            /// DOM rootNote key.
-            return Number(key.dataset.notenumber) === rootNoteNumber;
-        });
-        /// Mark Keys.
-        for (const [index, noteIndex] of chordNumbers.entries()) {
-            if (index === 0) { /// For Root Note
-                const keyNumber = (noteIndex + rootNoteNumber) % 12;
-                const keysDOM = [...keys];
-                const keyNumberDOM = keysDOM.filter((keyButton) => {
-                    return Number(keyButton.dataset.notenumber) === keyNumber;
-                });
-                keyNumberDOM.forEach((key) =>
-                    key.classList.add("rootKeySelected")
-                );
-            } else {
-                const keyNumber = (noteIndex + rootNoteNumber) % 12;
-                const keysDOM = [...keys];
-                const keyNumberDOM = keysDOM.filter((keyButton) => {
-                    return Number(keyButton.dataset.notenumber) === keyNumber;
-                });
-                keyNumberDOM.forEach((key) => key.classList.add("keySelected"));
-            }
-        }
-    }
-
-    //h1 Get Chord Data
-    /// Obtenemos la informacion de todos los botones.
-    function getChordData() {
-        const ChordData = {
-            accidental: Object.keys(BooleanAccidental).find((key) => {
-                return BooleanAccidental[key] === true;
-            }),
-            rootNote: Object.keys(BooleanNoteBtns).find((key) => {
-                return BooleanNoteBtns[key] === true;
-            }),
-            chordSize: Object.keys(BooleanChordSize).find((key) => {
-                return BooleanChordSize[key] === true;
-            }),
-            chordColor: Object.keys(BooleanChordColor).find((key) => {
-                return BooleanChordColor[key] === true;
-            }),
-        };
-        if (!BooleanAccidental.natural) {
-            /// Si es falso significa que la nota tiene un accidental.
-            BooleanAccidental.sharp == true
-                ? (ChordData.rootNote += "s")
-                : (ChordData.rootNote += "b");
-        }
-        return ChordData;
-    }
-
-    allButtons.forEach((button) =>
-        button.addEventListener("click", selectKeys)
-    ); /// Este event listener debe estar despues de todos los demás para rescatar la última información disponible de los botones!
+function checkChord() {
+    /// chordCheck returns true if all fields are valid.
+    const chordCheck = Object.values(chord).reduce((acc, field) => {
+        if (!field & field !== 0) {
+            acc = false};
+        return acc;
+    }, true);
+    return chordCheck;
 }
 
-piano("container1");
-piano("container2");
-piano("container3");
-piano("container4");
+function printChord() {
+    console.log(getChordData());
+    /// Guard clause: Si el objeto chord tiene algun campo null, no hacer nada. Si todos son no null, hacer algo.
+    if (!checkChord()) {
+        console.log('Se corta')
+        removeKeys()
+        return
+    }
+    console.log('Hacer algo')
+    rootNoteNumber(chord)
+    const keysInfo = {
+        major: [0, 4, 7],
+        minor: [0, 3, 7],
+        diminished: [0, 3, 6],
+        augmented: [0, 4, 8],
+        sus2: [0, 2, 7],
+        sus4: [0, 5, 7],
+        maj7: [0, 4, 7, 11],
+        minor7: [0, 3, 7, 10],
+        dominant7: [0, 4, 7, 10], /// Major with minor at the end.
+    };
+    const intervals = keysInfo[chord.color].map((interval)=> (interval + chord.number)%12)
+    //console.log('intervals',intervals) 
+    markKeys(intervals)
+}
 
+function getChordData() {
+    /// See which buttons are selected.
+    chord.chordSize = [
+        ...parent_container__Btns.querySelector(".container__chordSizeBtns")
+            .children,
+    ].filter((button) => {
+        return button.classList.contains("btnSelected");
+    })[0].dataset.chordsize;
+    const colorBtns = [
+        ...parent_container__Btns.querySelector(".container__chordColorBtns")
+            .children[0].children,
+        ...parent_container__Btns.querySelector(".container__chordColorBtns")
+            .children[1].children,
+    ];
+    try{
+        chord.color = colorBtns.filter((button) => {return button.classList.contains("btnSelected")})[0].dataset.chordcolor
+    } catch {
+        chord.color = undefined
+    }
+    
+    try{
+        chord.note = [
+            ...parent_container__Btns.querySelector(".container__noteBtns").children].filter((button) => {
+                return button.classList.contains("btnSelected");
+            })[0].dataset.note;
+    } catch {
+        chord.note = undefined
+    }
 
+    chord.accidental = [
+        ...parent_container__Btns.querySelector(".container__accidentalsBtns")
+            .children,
+    ].filter((button) => {
+        return button.classList.contains("btnSelected");
+    })[0];
+    if (!chord.accidental) chord.accidental = 'natural'
+    else {
+        chord.accidental = chord.accidental.dataset.accidental;
+    }
+    return chord
+}
+function rootNoteNumber() {
+    const notesOrder = {
+        Cb: 11,
+        C: 0,
+        Cs: 1,
+        Db: 1,
+        D: 2,
+        Ds: 3,
+        Eb: 3,
+        E: 4,
+        Fb: 4,
+        Es: 5,
+        F: 5,
+        Fs: 6,
+        Gb: 6,
+        G: 7,
+        Gs: 8,
+        Ab: 8,
+        A: 9,
+        As: 10,
+        Bb: 10,
+        B: 11,
+        Bs: 0,
+    };
+    /// Calculate rootNoteNumber based on chord object info.
+    if (chord.accidental == 'sharp'){
+        chord.number = ((notesOrder[chord.note] + 1)%12)
+    } else if (chord.accidental == 'bemol'){
+        chord.number = (((notesOrder[chord.note]-1)+12)%12)
+    } else {
+        chord.number = notesOrder[chord.note]
+    }
+}
+function markKeys(intervals){
+    removeKeys()
+    intervals.forEach((keyNumber,index)=>{
+        console.log('index',index,'key',keyNumber)
+        if (index === 0){
+            /// This is the rootNote.
+            const rootKeys = piano.querySelectorAll(`[data-notenumber="${keyNumber}"]`)
+            console.log(rootKeys)
+            rootKeys.forEach(key=>key.classList.add('rootKeySelected'))
+        } else {
+            /// This are other notes.
+            const otherKeys = piano.querySelectorAll(`[data-notenumber="${keyNumber}"]`)
+            otherKeys.forEach(key=>key.classList.add('keySelected'))
+        }
+    })
+}
+function removeKeys(){
+    const allKeys = piano.querySelectorAll('.key')
+    allKeys.forEach((key)=>{
+        key.classList.remove('rootKeySelected')
+        key.classList.remove('keySelected')
+    })
+}

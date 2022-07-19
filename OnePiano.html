@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./OnePiano.css">
     <title>Document</title>
 </head>
 <body>
@@ -14,38 +14,38 @@
     <main>
         <section>
             <div class="container container1">
-                <div class="container__noteBtns">
-                    <div class="chordSizeBtns">
-                        <button data-chordsize = 'triad' class="btnSelected">Triad</button>
-                        <button data-chordsize = 'tetrad'>Tetrad</button>
+                <div class="parent_container__Btns">
+                    <div class="container__chordSizeBtns">
+                        <button data-button='chordsize' data-chordsize = 'triad' class="btnSelected">Triad</button>
+                        <button data-button='chordsize' data-chordsize = 'tetrad'>Tetrad</button>
                     </div>
-                    <div class="chordColorBtns">
+                    <div class="container__chordColorBtns">
                         <div class = 'triadBtns'>
-                            <button data-chordcolor = 'major' class="btnSelected">Major</button>
-                            <button data-chordcolor = 'minor'>Minor</button>
-                            <button data-chordcolor = 'diminished'>diminished</button>
-                            <button data-chordcolor = 'augmented'>Augmented</button>
-                            <button data-chordcolor = 'sus2'>Sus2</button>
-                            <button data-chordcolor = 'sus4'>Sus4</button>
+                            <button data-button='chordcolor' data-chordcolor = 'major' class="btnSelected">Major</button>
+                            <button data-button='chordcolor' data-chordcolor = 'minor'>Minor</button>
+                            <button data-button='chordcolor' data-chordcolor = 'diminished'>diminished</button>
+                            <button data-button='chordcolor' data-chordcolor = 'augmented'>Augmented</button>
+                            <button data-button='chordcolor' data-chordcolor = 'sus2'>Sus2</button>
+                            <button data-button='chordcolor' data-chordcolor = 'sus4'>Sus4</button>
                         </div>
                         <div class = 'tetradBtns hidden'>
-                            <button data-chordcolor = 'maj7' class="btnSelected">Maj7</button>
-                            <button data-chordcolor = 'minor7'>Minor7</button>
-                            <button data-chordcolor = 'dominant7'>Dominant7</button>
+                            <button data-button='chordcolor' data-chordcolor = 'maj7' class="btnSelected">Maj7</button>
+                            <button data-button='chordcolor' data-chordcolor = 'minor7'>Minor7</button>
+                            <button data-button='chordcolor' data-chordcolor = 'dominant7'>Dominant7</button>
                         </div>
                     </div>
-                    <div class="noteBtns">
-                        <button data-note="C">C</button>
-                        <button data-note="D">D</button>
-                        <button data-note="E">E</button>
-                        <button data-note="F">F</button>      
-                        <button data-note="G">G</button>
-                        <button data-note="A">A</button>
-                        <button data-note="B">B</button>
+                    <div class="container__noteBtns">
+                        <button data-button='notebtn' data-note="C" data-notenumber="0">C</button>
+                        <button data-button='notebtn' data-note="D" data-notenumber="2">D</button>
+                        <button data-button='notebtn' data-note="E" data-notenumber="4">E</button>
+                        <button data-button='notebtn' data-note="F" data-notenumber="5">F</button>      
+                        <button data-button='notebtn' data-note="G" data-notenumber="7">G</button>
+                        <button data-button='notebtn' data-note="A" data-notenumber="9">A</button>
+                        <button data-button='notebtn' data-note="B" data-notenumber="11">B</button>
                     </div>
-                    <div class="accidentalsBtns">
-                        <button data-accidental="sharp">#</button>
-                        <button data-accidental="bemol">b</button>
+                    <div class="container__accidentalsBtns">
+                        <button data-button='accidental' data-accidental="sharp">#</button>
+                        <button data-button='accidental' data-accidental="bemol">b</button>
                     </div>
                 </div>
                 <div class="piano">
