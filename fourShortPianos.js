@@ -780,6 +780,7 @@ function pianoCorto(containerReference) {
 }
 //h1 Ahora a experimentar crear 3 tabs de piano, uno para cada inversion
 
-piano("container1");
+pianoCorto("container1");
 pianoCorto("container2");
 pianoCorto("container3");
+pianoCorto("container4");
